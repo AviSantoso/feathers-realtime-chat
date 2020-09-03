@@ -1,0 +1,2 @@
+# feathers-realtime-chat
+ 
