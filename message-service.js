@@ -17,7 +17,8 @@ class MessageService {
       created: now,
       modified: now,
       text: data.text,
-      history: data.history == null ? [] : data.history
+      history: data.history == null ? [] : data.history,
+      user: data.user
     }
 
     this.messages.push(newMessage);

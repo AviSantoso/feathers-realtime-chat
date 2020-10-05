@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use('messages', new MessageService());
 
 app.service('messages').on('created', message => {
-  console.log(`New message with id: '${message.id}' and message: '${message.text}'. ${message.history.length} changes so far.`);
+  console.log(`New message by user ${message.user} with id: '${message.id}' and message: '${message.text}'. ${message.history.length} changes so far.`);
 })
 
 app.service('messages').on('removed', message => {
@@ -22,7 +22,8 @@ app.listen(PORT).on('listening', () => console.log(`Server listening on PORT: ${
 const main = async () => {
   await app.service('messages').create({
     text: "Server created.",
-    history: []
+    history: [],
+    user: "Admin"
   });
   const message = (await app.service('messages').find())[0];
   await app.service('messages').remove({
